@@ -5,21 +5,27 @@ import random
 import os
 
 def generate_retiro_code():
-    length = random.choice([6, 10])
-    if random.random() <= 0.15:
-        valid_code = ''.join(random.choices('0123456789', k=length - 2))
-        return "12" + valid_code if length == 6 else valid_code + "99"
-    else:
-        return ''.join(random.choices('12345678992383817357', k=length))
+    """
+    Genera un código de retiro sin tarjeta de 12 dígitos.
+    """
+    return ''.join(random.choices('0123456789', k=12))
+
+def generate_verification_code():
+    """
+    Genera un código de verificación de 4 dígitos.
+    """
+    return ''.join(random.choices('0123456789', k=4))
 
 def GCR():
+    # Generar nombre y apellido aleatorios
     names = ["Daniel", "Julián", "Emiliano", "Juan", "Pedro", "Jose", "Antonio", "Francisco", "Luis", "Manuel", "Javier", "Carlos", "Sergio", "Raúl", "Emilio", "Brandon", "Ana", "Sofía", "Laura", "María", "Elizabeth", "Samira", "Rocio", "Gabriel", "Fernando", "Verónica", "Isabella", "Diego", "Roberto", "Valentina", "Fabián", "Lucía", "Andrés", "Carolina", "Martina", "Gonzalo", "Camila", "Tomás", "Victoria", "Matías", "Alejandra", "Maximiliano", "Valeria", "Eduardo", "Julia", "Nicolás", "Mariana", "Rafael", "Catalina", "Leandro", "Adriana", "Sebastián", "Daniela", "Facundo", "Margarita", "Lorenzo", "Abril", "Felipe", "Solange", "Benjamín", "Renata", "Pedro", "Constanza", "Ángel", "Antonia", "Gabriela", "Hugo", "René", "Paloma", "Rodrigo", "Elena", "Federico", "Juliana", "Ignacio", "Paula", "Martín", "Beatriz", "Matilde", "Francisca", "Esteban", "René", "Rosa", "Alberto", "Silvia", "Leonardo", "Natalia", "Bruno", "Valentín", "Juliana", "Gisela", "Fernando", "Cecilia", "Agustín", "Marina"]
     surnames = ["Giménez", "Fernández", "García", "López", "Martínez", "Pérez", "Sánchez", "Suárez", "Torres", "Díaz", "Gómez", "Vázquez", "Castro", "Morales", "Jiménez", "Ruiz", "Ramírez", "Herrera", "Medina", "Ortega", "Delgado", "Hernández", "Álvarez", "Navarro", "Moreno", "Guerrero", "Cabrera", "Vidal", "Mendoza", "Ponce", "Salazar", "Aguilar", "Rojas", "Sepúlveda", "Quintero", "Contreras", "Vega", "Escobar", "Soto", "Valenzuela", "Espinoza", "Muñoz", "Figueroa", "Chávez", "Rivas", "Suarez", "Montoya", "Fuentes", "Cruz", "Flores", "Martínez", "Gómez", "Franco", "Pérez", "León", "Reyes", "Vargas", "Rosales", "Campos", "Ibarra", "Guerrero"]
 
     name = f"{random.choice(names)} {random.choice(surnames)}"
     retiro_code = generate_retiro_code()
-    
-    crinf = f'Código de Retiro: {retiro_code} | Nombre: {name}'
+    verification_code = generate_verification_code()
+
+    crinf = f'Código de Retiro: {retiro_code} | Código de Verificación: {verification_code} | Nombre: {name}'
     return crinf
 
 def GCRs(num_codes):
